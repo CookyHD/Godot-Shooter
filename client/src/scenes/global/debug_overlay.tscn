@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmqykj603owr4"]
+
+[ext_resource type="Script" uid="uid://dnf6u3kn2iy3" path="res://src/scenes/global/scripts/debug_overlay.gd" id="1_t3oe4"]
+[ext_resource type="Texture2D" uid="uid://ch8xc1j6ivty" path="res://assets/textures/icon/stamina_icon.png" id="2_lmmra"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_li0tk"]
+font_size = 24
+font_color = Color(1, 1, 0, 1)
+outline_size = 6
+outline_color = Color(0.1, 0.1, 0, 1)
+shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_lmmra"]
+font_size = 24
+font_color = Color(0, 0.9166665, 1, 1)
+outline_size = 6
+outline_color = Color(0, 0.18333331, 0.2, 1)
+
+[sub_resource type="Gradient" id="Gradient_li0tk"]
+offsets = PackedFloat32Array(0.4, 0.45, 0.5)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.61, 0.61, 0.61, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lmmra"]
+gradient = SubResource("Gradient_li0tk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="DebugOverlay" type="CanvasLayer"]
+layer = 999
+
+[node name="Screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_t3oe4")
+
+[node name="List" type="VBoxContainer" parent="Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPS" type="Label" parent="Screen/List"]
+layout_mode = 2
+mouse_filter = 1
+text = "FPS: 0"
+label_settings = SubResource("LabelSettings_li0tk")
+
+[node name="PING" type="Label" parent="Screen/List"]
+layout_mode = 2
+mouse_filter = 1
+text = "Ping: 0 ms"
+label_settings = SubResource("LabelSettings_li0tk")
+
+[node name="MOVE" type="Label" parent="Screen/List"]
+layout_mode = 2
+text = "Empty
+Empty"
+label_settings = SubResource("LabelSettings_lmmra")
+
+[node name="Middle" type="Control" parent="Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dot" type="Sprite2D" parent="Screen/Middle"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("GradientTexture2D_lmmra")
+
+[node name="RightLeft" type="Control" parent="Screen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Scale" type="Node2D" parent="Screen/RightLeft"]
+position = Vector2(10, -10)
+scale = Vector2(0.1, 0.1)
+
+[node name="BG" type="Sprite2D" parent="Screen/RightLeft/Scale"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -1053)
+texture = ExtResource("2_lmmra")
+centered = false
+offset = Vector2(35, 35)
+
+[node name="Stamina" type="TextureProgressBar" parent="Screen/RightLeft/Scale"]
+offset_top = -1050.0001
+offset_right = 960.0
+offset_bottom = 2.999878
+value = 80.0
+fill_mode = 4
+texture_under = ExtResource("2_lmmra")
+texture_over = ExtResource("2_lmmra")
+texture_progress = ExtResource("2_lmmra")
+tint_under = Color(0.1, 0.1, 0.1, 1)
+tint_over = Color(1, 0, 0, 0)
+tint_progress = Color(0.19999999, 0.73333323, 1, 1)

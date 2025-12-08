@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dntfk1c2kunjy"]
+
+[ext_resource type="Script" uid="uid://bigb00kch3w2y" path="res://src/scenes/comps/scripts/deny_area.gd" id="1_l4kcd"]
+
+[node name="DenyArea" type="Area3D"]
+script = ExtResource("1_l4kcd")

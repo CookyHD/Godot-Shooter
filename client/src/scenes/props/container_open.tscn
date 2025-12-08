@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dotmhadh4hj55"]
+
+[ext_resource type="ArrayMesh" uid="uid://bs2cx8gv08y6o" path="res://assets/simple_meshs/container.obj" id="1_m1hko"]
+[ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_bn3km"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuyr4"]
+albedo_color = Color(0, 0.6666665, 1, 1)
+albedo_texture = ExtResource("2_bn3km")
+uv1_triplanar = true
+
+[node name="ContainerOpen" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = ExtResource("1_m1hko")
+material = SubResource("StandardMaterial3D_yuyr4")

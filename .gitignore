@@ -1,0 +1,4 @@
+# Godot 4+ specific ignores
+server/.godot/
+client/.godot/
+.editorconfig

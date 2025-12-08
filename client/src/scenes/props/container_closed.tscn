@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ssdf3n2sot6"]
+
+[ext_resource type="ArrayMesh" uid="uid://bs2cx8gv08y6o" path="res://assets/simple_meshs/container.obj" id="1_wd233"]
+[ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_x3cls"]
+[ext_resource type="ArrayMesh" uid="uid://cl3ugby2vlsx7" path="res://assets/simple_meshs/container_cover.obj" id="3_xxlm6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wd233"]
+albedo_color = Color(0.6666666, 1, 0, 1)
+albedo_texture = ExtResource("2_x3cls")
+uv1_triplanar = true
+
+[node name="ContainerClosed" type="Node3D"]
+
+[node name="CSGMesh3D1" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = ExtResource("1_wd233")
+material = SubResource("StandardMaterial3D_wd233")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = ExtResource("3_xxlm6")
+material = SubResource("StandardMaterial3D_wd233")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+use_collision = true
+mesh = ExtResource("3_xxlm6")
+material = SubResource("StandardMaterial3D_wd233")

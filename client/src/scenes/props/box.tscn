@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdojd4m0nigyk"]
+
+[ext_resource type="ArrayMesh" uid="uid://08jm6nv6tc4x" path="res://assets/simple_meshs/box.obj" id="1_ybig4"]
+[ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_b1ml2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i43n3"]
+albedo_color = Color(1, 0.75, 0, 1)
+albedo_texture = ExtResource("2_b1ml2")
+uv1_triplanar = true
+
+[node name="Box" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = ExtResource("1_ybig4")
+material = SubResource("StandardMaterial3D_i43n3")

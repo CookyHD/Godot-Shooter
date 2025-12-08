@@ -1,0 +1,161 @@
+[gd_scene load_steps=21 format=3 uid="uid://h0uaxbtmbtym"]
+
+[ext_resource type="PackedScene" uid="uid://perrcb66iabi" path="res://src/scenes/pawns/player.tscn" id="1_a2ug0"]
+[ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="1_osw1l"]
+[ext_resource type="PackedScene" uid="uid://dhu005axnrwvg" path="res://src/scenes/props/container_semi_open.tscn" id="3_b7fi5"]
+[ext_resource type="PackedScene" uid="uid://dotmhadh4hj55" path="res://src/scenes/props/container_open.tscn" id="3_dm202"]
+[ext_resource type="PackedScene" uid="uid://b5ssdf3n2sot6" path="res://src/scenes/props/container_closed.tscn" id="4_g8r04"]
+[ext_resource type="PackedScene" uid="uid://bdojd4m0nigyk" path="res://src/scenes/props/box.tscn" id="4_jm2xb"]
+[ext_resource type="PackedScene" uid="uid://ry8bh7ub4sd3" path="res://src/scenes/pawns/server_player.tscn" id="5_3njka"]
+[ext_resource type="PackedScene" uid="uid://g02vh6nfh48p" path="res://src/scenes/props/tray.tscn" id="6_g8r04"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a2ug0"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_osw1l"]
+sky_material = SubResource("ProceduralSkyMaterial_a2ug0")
+
+[sub_resource type="Environment" id="Environment_dm202"]
+background_mode = 2
+sky = SubResource("Sky_osw1l")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_dm202"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osw1l"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+albedo_texture = ExtResource("1_osw1l")
+rim = 0.03
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3njka"]
+albedo_color = Color(1, 0.75, 0, 1)
+albedo_texture = ExtResource("1_osw1l")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kp6gn"]
+material = SubResource("StandardMaterial3D_3njka")
+size = Vector3(0.5, 8, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8r04"]
+size = Vector3(3.999, 0.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8r04"]
+albedo_color = Color(1, 0.75, 0, 1)
+albedo_texture = ExtResource("1_osw1l")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_b7fi5"]
+size = Vector3(4, 0.5, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3njka"]
+size = Vector3(10, 64, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp6gn"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+albedo_texture = ExtResource("1_osw1l")
+rim = 0.03
+uv1_triplanar = true
+
+[node name="Test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.81915206, -0.4698463, 0.32898992, 0, 0.5735764, 0.819152, -0.57357645, -0.67101, 0.4698463, 0, 10, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dm202")
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGMesh3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00016140938, 0, 0.0050258636)
+use_collision = true
+mesh = SubResource("BoxMesh_dm202")
+material = SubResource("StandardMaterial3D_osw1l")
+
+[node name="Wall" type="CSGMesh3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 7, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_kp6gn")
+
+[node name="Stillt1" type="CSGBox3D" parent="Terrain/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, 7)
+size = Vector3(0.25, 2.5, 0.25)
+material = SubResource("StandardMaterial3D_3njka")
+
+[node name="Stillt2" type="CSGBox3D" parent="Terrain/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, -7)
+size = Vector3(0.25, 2.5, 0.25)
+material = SubResource("StandardMaterial3D_3njka")
+
+[node name="Platfrom1" type="CSGMesh3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -16, 5, -8)
+use_collision = true
+mesh = SubResource("BoxMesh_g8r04")
+material = SubResource("StandardMaterial3D_g8r04")
+
+[node name="Platfrom2" type="CSGMesh3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -16, 5, 8)
+use_collision = true
+mesh = SubResource("BoxMesh_g8r04")
+material = SubResource("StandardMaterial3D_g8r04")
+
+[node name="Pivot" type="Node3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -16, 5.25, 9)
+
+[node name="Ramp" type="CSGMesh3D" parent="Terrain/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -0.25, 4)
+use_collision = true
+mesh = SubResource("BoxMesh_b7fi5")
+material = SubResource("StandardMaterial3D_g8r04")
+
+[node name="Tower" type="CSGMesh3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 32.5, 40)
+use_collision = true
+mesh = SubResource("BoxMesh_3njka")
+material = SubResource("StandardMaterial3D_kp6gn")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="ContainerOpen" parent="Props" instance=ExtResource("3_dm202")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 0.5, -10)
+
+[node name="ContainerSemiOpen" parent="Props" instance=ExtResource("3_b7fi5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 0.5, -13.1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Props/ContainerSemiOpen"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, 0)
+light_color = Color(1, 0.88, 0.8, 1)
+
+[node name="ContainerClosed" parent="Props" instance=ExtResource("4_g8r04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, -11.55)
+
+[node name="Box1" parent="Props" instance=ExtResource("4_jm2xb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -1)
+
+[node name="Box2" parent="Props" instance=ExtResource("4_jm2xb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
+
+[node name="Box3" parent="Props" instance=ExtResource("4_jm2xb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
+
+[node name="Tray1" parent="Props" instance=ExtResource("6_g8r04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, -18)
+
+[node name="Tray2" parent="Props" instance=ExtResource("6_g8r04")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17, 0.5, -14.800001)
+
+[node name="Tray3" parent="Props" instance=ExtResource("6_g8r04")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17, 0.5, -21.2)
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("1_a2ug0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="ServerPlayer" parent="Players" instance=ExtResource("5_3njka")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12, 1.5, 0)
