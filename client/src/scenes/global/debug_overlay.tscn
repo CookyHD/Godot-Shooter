@@ -17,8 +17,8 @@ outline_size = 6
 outline_color = Color(0, 0.18333331, 0.2, 1)
 
 [sub_resource type="Gradient" id="Gradient_li0tk"]
-offsets = PackedFloat32Array(0.4, 0.45, 0.5)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.61, 0.61, 0.61, 0)
+offsets = PackedFloat32Array(0.5, 0.51)
+colors = PackedColorArray(1, 1, 1, 1, 0.61, 0.61, 0.61, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lmmra"]
 gradient = SubResource("Gradient_li0tk")
@@ -75,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Dot" type="Sprite2D" parent="Screen/Middle"]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = SubResource("GradientTexture2D_lmmra")
 
 [node name="RightLeft" type="Control" parent="Screen"]
