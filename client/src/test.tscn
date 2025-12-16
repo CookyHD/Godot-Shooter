@@ -41,7 +41,7 @@ material = SubResource("StandardMaterial3D_3njka")
 size = Vector3(0.5, 8, 16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g8r04"]
-size = Vector3(3.999, 0.5, 2)
+size = Vector3(4, 0.5, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_b7fi5"]
 size = Vector3(4, 0.5, 8)
@@ -127,7 +127,7 @@ mesh = SubResource("BoxMesh_g8r04")
 material = SubResource("StandardMaterial3D_3njka")
 
 [node name="Pivot" type="Node3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -16, 5.25, 9)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, -16, 5.25, 9)
 
 [node name="Ramp" type="CSGMesh3D" parent="Terrain/Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -0.25, 4)
@@ -185,4 +185,4 @@ mesh = SubResource("PrismMesh_6rl0o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="ServerPlayer" parent="Players" instance=ExtResource("5_3njka")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12, 1.5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 1.5, -2.9999993)
