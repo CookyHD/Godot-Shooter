@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_csqpt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csqpt"]
-albedo_color = Color(0, 0.9166665, 1, 1)
+albedo_color = Color(0, 0.6666665, 1, 1)
 albedo_texture = ExtResource("1_csqpt")
 uv1_triplanar = true
 

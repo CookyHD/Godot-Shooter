@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://h0uaxbtmbtym"]
+[gd_scene load_steps=26 format=3 uid="uid://h0uaxbtmbtym"]
 
 [ext_resource type="PackedScene" uid="uid://perrcb66iabi" path="res://src/scenes/pawns/player.tscn" id="1_a2ug0"]
 [ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="1_osw1l"]
@@ -32,7 +32,7 @@ rim = 0.03
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3njka"]
-albedo_color = Color(1, 0.75, 0, 1)
+albedo_color = Color(1, 0.8333334, 0, 1)
 albedo_texture = ExtResource("1_osw1l")
 uv1_triplanar = true
 
@@ -42,11 +42,6 @@ size = Vector3(0.5, 8, 16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g8r04"]
 size = Vector3(3.999, 0.5, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8r04"]
-albedo_color = Color(1, 0.75, 0, 1)
-albedo_texture = ExtResource("1_osw1l")
-uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_b7fi5"]
 size = Vector3(4, 0.5, 8)
@@ -59,6 +54,33 @@ albedo_color = Color(0.2, 0.2, 0.2, 1)
 albedo_texture = ExtResource("1_osw1l")
 rim = 0.03
 uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tchgg"]
+albedo_color = Color(1, 0, 0, 1)
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_if8kf"]
+material = SubResource("StandardMaterial3D_tchgg")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if8kf"]
+albedo_color = Color(0, 0.6666665, 1, 1)
+emission = Color(0, 0.6666665, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ysibu"]
+material = SubResource("StandardMaterial3D_if8kf")
+radius = 0.25
+height = 0.5
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybvmb"]
+albedo_color = Color(1, 0.8333334, 0, 1)
+emission = Color(1, 0.8333334, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_6rl0o"]
+material = SubResource("StandardMaterial3D_ybvmb")
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Test" type="Node3D"]
 
@@ -96,13 +118,13 @@ material = SubResource("StandardMaterial3D_3njka")
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -16, 5, -8)
 use_collision = true
 mesh = SubResource("BoxMesh_g8r04")
-material = SubResource("StandardMaterial3D_g8r04")
+material = SubResource("StandardMaterial3D_3njka")
 
 [node name="Platfrom2" type="CSGMesh3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -16, 5, 8)
 use_collision = true
 mesh = SubResource("BoxMesh_g8r04")
-material = SubResource("StandardMaterial3D_g8r04")
+material = SubResource("StandardMaterial3D_3njka")
 
 [node name="Pivot" type="Node3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -16, 5.25, 9)
@@ -111,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -0.25, 4)
 use_collision = true
 mesh = SubResource("BoxMesh_b7fi5")
-material = SubResource("StandardMaterial3D_g8r04")
+material = SubResource("StandardMaterial3D_3njka")
 
 [node name="Tower" type="CSGMesh3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 32.5, 40)
@@ -129,7 +151,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Props/ContainerSemiOpen"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, 0)
-light_color = Color(1, 0.88, 0.8, 1)
 
 [node name="ContainerClosed" parent="Props" instance=ExtResource("4_g8r04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, -11.5)
@@ -145,6 +166,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 1
 
 [node name="Tray1" parent="Props" instance=ExtResource("6_g8r04")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.9999998, 0.5, 4.500001)
+
+[node name="Cube" type="MeshInstance3D" parent="Props/Tray1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.8, 0)
+mesh = SubResource("BoxMesh_if8kf")
+
+[node name="Ball" type="MeshInstance3D" parent="Props/Tray1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.8, 0)
+mesh = SubResource("SphereMesh_ysibu")
+
+[node name="Tri" type="MeshInstance3D" parent="Props/Tray1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, 0)
+mesh = SubResource("PrismMesh_6rl0o")
 
 [node name="Players" type="Node3D" parent="."]
 

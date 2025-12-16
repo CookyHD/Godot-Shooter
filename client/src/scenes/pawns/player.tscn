@@ -1,14 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://perrcb66iabi"]
+[gd_scene load_steps=6 format=3 uid="uid://perrcb66iabi"]
 
 [ext_resource type="Script" uid="uid://bmneupxnbofxt" path="res://src/scenes/pawns/scripts/player.gd" id="1_oslh3"]
+[ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_ysa4j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yhmpm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c576k"]
+albedo_color = Color(1, 0.5, 0, 1)
+albedo_texture = ExtResource("2_ysa4j")
+uv1_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_32vww"]
+material = SubResource("StandardMaterial3D_c576k")
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_oslh3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_yhmpm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_32vww")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -17,24 +29,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 current = true
 fov = 70.0
 near = 0.01
-
-[node name="Pickup" type="RayCast3D" parent="Pivot"]
-target_position = Vector3(0, 0, -3)
-
-[node name="Movment Ray" type="Node3D" parent="."]
-
-[node name="WallRunL" type="RayCast3D" parent="Movment Ray"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-target_position = Vector3(-1, 0, 0)
-
-[node name="WallRunR" type="RayCast3D" parent="Movment Ray"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-target_position = Vector3(0.5, 0, 0)
-
-[node name="Climb" type="RayCast3D" parent="Movment Ray"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-target_position = Vector3(0, 0, -0.25)
-
-[node name="Mantle" type="RayCast3D" parent="Movment Ray"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.75)
-target_position = Vector3(0, 0.5, 0)

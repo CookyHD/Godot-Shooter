@@ -3,8 +3,8 @@
 [ext_resource type="ArrayMesh" uid="uid://d00fduo4yivxf" path="res://assets/simple_meshs/tray.obj" id="1_420bs"]
 [ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_a8bx2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k0ah"]
-albedo_color = Color(0.8, 0.9833333, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuyr4"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
 albedo_texture = ExtResource("2_a8bx2")
 uv1_triplanar = true
 
@@ -13,4 +13,4 @@ uv1_triplanar = true
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 use_collision = true
 mesh = ExtResource("1_420bs")
-material = SubResource("StandardMaterial3D_7k0ah")
+material = SubResource("StandardMaterial3D_yuyr4")

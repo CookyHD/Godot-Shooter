@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_aoka2"]
 [ext_resource type="ArrayMesh" uid="uid://cl3ugby2vlsx7" path="res://assets/simple_meshs/container_cover.obj" id="3_ir1xd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44vll"]
-albedo_color = Color(1, 0.5833334, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuyr4"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
 albedo_texture = ExtResource("2_aoka2")
 uv1_triplanar = true
 
@@ -14,10 +14,10 @@ uv1_triplanar = true
 [node name="CSGMesh3D1" type="CSGMesh3D" parent="."]
 use_collision = true
 mesh = ExtResource("1_44vll")
-material = SubResource("StandardMaterial3D_44vll")
+material = SubResource("StandardMaterial3D_yuyr4")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 use_collision = true
 mesh = ExtResource("3_ir1xd")
-material = SubResource("StandardMaterial3D_44vll")
+material = SubResource("StandardMaterial3D_yuyr4")

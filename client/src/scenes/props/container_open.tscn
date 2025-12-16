@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bq0cpvv6uqg1e" path="res://assets/textures/terrain/test_grid.png" id="2_bn3km"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuyr4"]
-albedo_color = Color(0, 0.6666665, 1, 1)
+albedo_color = Color(0.6, 0.6, 0.6, 1)
 albedo_texture = ExtResource("2_bn3km")
 uv1_triplanar = true
 
